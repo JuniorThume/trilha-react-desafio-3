@@ -4,8 +4,15 @@ import logo from '../../assets/logo-dio.png';
 import { Button } from '../Button';
 
 import { Container, Wrapper, BuscarInputContainer, Input, Row, Menu, MenuRight, UserPicture} from './styles';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({autenticado}) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (destiny) => {
+    navigate(`/${destiny}`)
+  }
+
   return (
     <Wrapper>
       <Container>
@@ -23,12 +30,12 @@ const Header = ({autenticado}) => {
           </Row>
           <Row>
               {autenticado ? (
-                <UserPicture src="https://avatars.githubusercontent.com/u/45184516?v=4"/>
+                <UserPicture src="https://avatars.githubusercontent.com/u/87200582?v=4"/>
               ) : (
               <>
                 <MenuRight href="/">Home</MenuRight>
-                <Button title="Entrar" />
-                <Button title="Cadastrar" />
+                <Button title="Entrar" onClick={() => handleNavigate('login')}/>
+                <Button title="Cadastrar" onClick={() => handleNavigate('register')} />
               </>)}
           </Row>
       </Container>
